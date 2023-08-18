@@ -1,1 +1,5 @@
 # challenge
+
+```shell script
+mkdir
+```
