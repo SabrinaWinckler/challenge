@@ -2,9 +2,13 @@
 
 ## Setup enviroment
 
-Install...
+Install python dependencies
 ```shell script
-mkdir
+pip install -r requiremtens.txt
 ```
+
+## For execute A scope
+
+
 
 ## Related Docs
