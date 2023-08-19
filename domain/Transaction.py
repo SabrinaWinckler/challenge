@@ -63,7 +63,7 @@ class Transaction:
             message = {"Message":"Resgate poupança realizado com sucesso", "Saldo atual Poupança" : poupanca.saldo, "Saldo atual conta corrente": conta.saldo}
             return  json.dumps(message,  ensure_ascii=False)
         
-        return {"Message":"Saldo insuficiente na conta"}
+        return {"Message":"Saldo insuficiente na conta poupança"}
 
     def create_conta(self, titular, saldo):
         conta = Conta(titular=titular, saldo=saldo)
@@ -87,7 +87,10 @@ class Transaction:
         else:
             conta.saldo  = conta.saldo - value
         self.session.commit()
-        data_obj = datetime.strptime(data, '%Y-%m-%d')
+        if not data: 
+            data_obj = datetime.now()
+        else:
+            data_obj = datetime.strptime(data, '%Y-%m-%d')
         extrato =Extrato(data=data_obj,description=description,value_transaction=value,conta=conta)
         self.session.add(extrato)
         self.session.commit()

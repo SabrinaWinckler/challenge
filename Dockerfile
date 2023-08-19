@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Instale as dependências
-RUN pip install Flask Flask-SQLAlchemy
+RUN pip install -r requirements.txt
 
 # Expõe a porta 5000 para acessar o aplicativo Flask
 EXPOSE 5000
